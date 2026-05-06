@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="week5_ex02_style.css">
+</head>
+<body>
+
+    <h1>Dynamic Image Gallery</h1>
+
+    <!-- Filter Buttons -->
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="landscape">Landscapes</button>
+        <button class="filter-btn" data-filter="portrait">Portraits</button>
+        <button class="filter-btn" data-filter="architecture">Architecture</button>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery">
+
+        <!-- Card -->
+        <div class="card landscape">
+            <img src="https://picsum.photos/300/200?1">
+            <div class="card-content">
+                <h3>Mountain View</h3>
+                <span>Landscape</span>
+            </div>
+            <div class="overlay">Beautiful mountain scenery</div>
+        </div>
+
+        <div class="card portrait">
+            <img src="https://picsum.photos/300/200?2">
+            <div class="card-content">
+                <h3>Smiling Person</h3>
+                <span>Portrait</span>
+            </div>
+            <div class="overlay">A happy portrait</div>
+        </div>
+
+        <div class="card architecture">
+            <img src="https://picsum.photos/300/200?3">
+            <div class="card-content">
+                <h3>Modern Building</h3>
+                <span>Architecture</span>
+            </div>
+            <div class="overlay">Urban design</div>
+        </div>
+
+        <!-- Duplicate more cards to reach 12 -->
+        <div class="card landscape">
+            <img src="https://picsum.photos/300/200?4">
+            <div class="card-content">
+                <h3>Lake</h3>
+                <span>Landscape</span>
+            </div>
+            <div class="overlay">Peaceful lake</div>
+        </div>
+
+        <div class="card portrait">
+            <img src="https://picsum.photos/300/200?5">
+            <div class="card-content">
+                <h3>Portrait Shot</h3>
+                <span>Portrait</span>
+            </div>
+            <div class="overlay">Studio portrait</div>
+        </div>
+
+        <div class="card architecture">
+            <img src="https://picsum.photos/300/200?6">
+            <div class="card-content">
+                <h3>Bridge</h3>
+                <span>Architecture</span>
+            </div>
+            <div class="overlay">Bridge structure</div>
+        </div>
+
+        <div class="card landscape">
+            <img src="https://picsum.photos/300/200?7">
+            <div class="card-content">
+                <h3>Forest</h3>
+                <span>Landscape</span>
+            </div>
+            <div class="overlay">Green forest</div>
+        </div>
+
+        <div class="card portrait">
+            <img src="https://picsum.photos/300/200?8">
+            <div class="card-content">
+                <h3>Close-up</h3>
+                <span>Portrait</span>
+            </div>
+            <div class="overlay">Detailed portrait</div>
+        </div>
+
+        <div class="card architecture">
+            <img src="https://picsum.photos/300/200?9">
+            <div class="card-content">
+                <h3>City</h3>
+                <span>Architecture</span>
+            </div>
+            <div class="overlay">City skyline</div>
+        </div>
+
+        <div class="card landscape">
+            <img src="https://picsum.photos/300/200?10">
+            <div class="card-content">
+                <h3>Desert</h3>
+                <span>Landscape</span>
+            </div>
+            <div class="overlay">Sandy dunes</div>
+        </div>
+
+        <div class="card portrait">
+            <img src="https://picsum.photos/300/200?11">
+            <div class="card-content">
+                <h3>Model</h3>
+                <span>Portrait</span>
+            </div>
+            <div class="overlay">Fashion portrait</div>
+        </div>
+
+        <div class="card architecture">
+            <img src="https://picsum.photos/300/200?12">
+            <div class="card-content">
+                <h3>Skyscraper</h3>
+                <span>Architecture</span>
+            </div>
+            <div class="overlay">Tall building</div>
+        </div>
+
+    </div>
+
+    <!-- JS for filtering -->
+    <script>
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                document.querySelector('.active').classList.remove('active');
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    if (filter === 'all' || card.classList.contains(filter)) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
